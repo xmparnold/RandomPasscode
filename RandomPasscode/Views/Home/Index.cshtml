@@ -5,7 +5,8 @@
 
 <div class="text-center">
     <h1 class="display-4">Random Passcode Generator</h1>
-    <h3>Passcode (# @Model.Number): @Model.RandomString</h3>
+    <h3>Passcode (# @Context.Session.GetInt32("gennum")): @Model.RandomString</h3>
+    <p>@Model.Count</p>
 
     <a asp-controller="Home" asp-action="GeneratePass">Generate</a>
 

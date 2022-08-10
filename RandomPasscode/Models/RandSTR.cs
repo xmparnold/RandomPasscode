@@ -3,11 +3,11 @@ namespace RandomPasscode.Models;
 public class RandSTR {
 
     public string? RandomString { get; set;}
-    public int? Number { get; set; }
+    public int Count { get; set; } = 0;
 
     public RandSTR() {
         Generate();
-        Number = 1;
+        
     }
 
     public void Generate() {
@@ -21,7 +21,7 @@ public class RandSTR {
 
             newString += chars[index];
         }
-        Number += 1;
         RandomString = newString;
+        Count = Count + 1;
     }
 }
