@@ -8,18 +8,10 @@ public class HomeController : Controller
 {
 
     RandSTR randString = new RandSTR();
-    public int number = 1;
-
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
 
     public IActionResult Index()
     {
-        // HttpContext.Session.SetInt32("gennum", number);
+        HttpContext.Session.SetInt32("gennum", 1);
         return View("Index", randString);
     }
 
@@ -31,8 +23,11 @@ public class HomeController : Controller
 
     public IActionResult GeneratePass() {
         randString.Generate();
-        // number += 1;
-        // HttpContext.Session.SetInt32("gennum", number);
+        int? number =  HttpContext.Session.GetInt32("gennum");
+        if (number == null) {
+            number = 1;
+        }
+        HttpContext.Session.SetInt32("gennum", (int)number + 1);
         return View("Index", randString);
         // return Index();
     }
