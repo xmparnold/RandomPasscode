@@ -1,0 +1,14 @@
+﻿@model RandSTR
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Random Passcode Generator</h1>
+    <h3>Passcode (# @Model.Number): @Model.RandomString</h3>
+
+    <a asp-controller="Home" asp-action="GeneratePass">Generate</a>
+
+</div>
+
+
